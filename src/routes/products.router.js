@@ -27,7 +27,13 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     const { title, description, code, price, status, stock, category,  thumbnail} = req.body;
     const newProduct = await manager.addProduct(title, description, code, price, status, stock, category,  thumbnail);
-    res.json(newProduct);
+    if (newProduct === "El código ya existe") {
+        res.status(400).json({error: "El código ya existe"});
+    } else if (newProduct === "Faltan datos") {
+        res.status(400).json({error: "Faltan datos"});
+    } else {
+        res.json(newProduct);
+    }
     });
 
 router.put('/:id', async (req, res) => {

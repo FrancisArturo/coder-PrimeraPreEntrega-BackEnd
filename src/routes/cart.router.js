@@ -23,6 +23,11 @@ router.get('/:cid', async (req, res) => {
 router.post('/:cid/product/:pid', async (req, res) => {
     const { cid, pid  } = req.params;
     const newProduct = await manager.addProductCart(cid, pid);
+    if (newProduct === "Carrito no encontrado") {
+        return res.status(404).json({error: "Carrito no encontrado"});
+    } else if (newProduct === "Producto no encontrado") {
+        return res.status(404).json({error: "Producto no encontrado"});
+    }
     return res.json(newProduct);
     });
 

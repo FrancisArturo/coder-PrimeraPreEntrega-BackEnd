@@ -1,7 +1,10 @@
 import fs from "fs";
+import ProductManager from "./Manager.js";
 
 
 export default class CartManager {
+    
+
     constructor () {
         this.path = "./src/files/carrito.json";
     }
@@ -48,19 +51,26 @@ export default class CartManager {
         const products = await this.getProductsCart(cid);
         const carts = await this.getCarts();
         const newProduct = {
-            id: pid,
+            product: pid,
             quantity: 1
         }
         if (products === "Carrito no encontrado") {
             return "Carrito no encontrado";
         }
 
-        const productoRepetido = products.find((product) => { return product.id == pid});
+        
+        const manager = new ProductManager();
+        const productInList = await manager.getProductById(pid);
+        if (productInList === "Not found") {
+            return "Producto no encontrado";
+        }
+
+        const productoRepetido = products.find((obj) => { return obj.product == pid});
         if (productoRepetido == undefined) {
             products.push(newProduct);
         } else {
             for (let obj in products) {
-                if (products[obj].id == pid) {
+                if (products[obj].product == pid) {
                     products[obj].quantity++;
                 }
             }
