@@ -17,6 +17,9 @@ router.get('/', async (req, res) => {
 router.get('/:cid', async (req, res) => {
     const { cid } = req.params;
     const products = await manager.getProductsCart( cid );
+    if (products === "Carrito no encontrado") {
+        return res.status(404).json({error: "Carrito no encontrado"});
+    }
     return res.json(products);
     });
 
