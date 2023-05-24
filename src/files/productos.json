@@ -1,9 +1,9 @@
 [
 	{
-		"title": "kiwis",
-		"description": "kiwis de Nueva Zelanda",
-		"code": "KWI-NZL-001",
-		"price": 9.5,
+		"title": "manzanas",
+		"description": "manzanas de Argentina",
+		"code": "KWI-NZL-002",
+		"price": 10.5,
 		"status": true,
 		"stock": 100,
 		"category": "frutas",

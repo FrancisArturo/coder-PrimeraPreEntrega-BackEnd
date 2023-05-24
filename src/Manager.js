@@ -29,7 +29,7 @@ export default class ProductManager {
             }
         }
 
-        if (!product.title || !product.description || !product.code || !product.price || !product.status || !product.stock || !product.category || !product.thumbnail) {
+        if (!product.title || !product.description || !product.code || !product.price || !product.status || !product.stock || !product.category) {
             return ("Faltan datos");
         }
 
@@ -84,12 +84,12 @@ export default class ProductManager {
             for (let obj in products) {
                 if (products[obj].id == id) {
                     for (let key in updateObj) {
-                        products[obj][key] = updateObj[key];
+                        products[obj] = {...products[obj], [key]: updateObj[key]};
                     }
                 }
             }          
             await fs.promises.writeFile(this.path, JSON.stringify(products, null, "\t"));
-            return "Producto añadido";
+            return "Producto actualizado";
         }
     }
 }
