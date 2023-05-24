@@ -1,13 +1,12 @@
 [
 	{
-		"title": "manzanas",
-		"description": "manzanas de Argentina",
-		"code": "KWI-NZL-002",
-		"price": 10.5,
+		"title": "naranjas",
+		"description": "naranjas de Argentina",
+		"code": "KWI-NZL-004",
+		"price": 10,
 		"status": true,
 		"stock": 100,
 		"category": "frutas",
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_kiwi-512.png",
 		"id": 1
 	}
 ]

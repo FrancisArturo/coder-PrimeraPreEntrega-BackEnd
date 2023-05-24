@@ -84,7 +84,7 @@ export default class ProductManager {
             for (let obj in products) {
                 if (products[obj].id == id) {
                     for (let key in updateObj) {
-                        products[obj] = {...products[obj], [key]: updateObj[key]};
+                        products[obj][key] = updateObj[key];
                     }
                 }
             }          
